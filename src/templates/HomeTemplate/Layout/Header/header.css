@@ -1,0 +1,42 @@
+.header{
+    box-shadow: 0 0 15px #a5a4a4;
+    background-color: var(--text-white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+.header .header__logo
+{
+    width: 50px;
+}
+.header .header__avatar{
+    width: 30px;
+}
+.header .header__list .header__item a {
+    font-size: 18px;
+    transition: all .5s;
+}
+.header .header__list .header__item.active .header__link{
+    color:var(--text-primary);
+    
+}
+.header .navbar-light .navbar-nav .nav-link{
+    color: var(--text-color);
+}
+.header .header__list .header__item a:hover{
+    color:var(--text-primary);
+}
+.header__avatar{
+    border-radius:50%
+}
+.header__login, .header__register{
+    color: var(--text-color);
+    transition:all .5s;
+}
+.header__login:hover, .header__register:hover{
+    color:var(--text-primary);
+}
+
+

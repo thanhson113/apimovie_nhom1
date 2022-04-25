@@ -1,0 +1,28 @@
+.movieCarousel{
+    padding: 70px 0;
+}
+.movieCarousel img{
+    /* opacity: 0; */
+    height: 600px;
+    object-fit: cover;
+}
+.movieCarousel__item{
+   background-size: 100%;
+   background-position: center ;
+   line-height:160px;
+}
+.movieCarousel .swiper-button-prev, .movieCarousel .swiper-button-next {
+    color: var(--text-white);
+    opacity: 0.8;
+    margin: 0 20px;
+}
+.movieCarousel .swiper-pagination-bullet {
+    background-color: var(--text-white);
+    opacity: 0.6;
+    padding:6px; 
+ 
+}
+.movieCarousel .swiper-pagination-bullet-active{
+    background-color: var(--text-primary);
+    opacity: 1;
+}

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'SF Regular' !important;
+    font-size: 14px;
+    scroll-behavior: smooth;
+}
+
+html,
+body,
+#root,
+.App {
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'SF Regular';
+    /* src: url("../asset/fonts/SF-UI-Display-Regular.otf"); */
+    src: url('./assets/fonts/SF-UI-Display-Regular.otf')
+}
+
+a:hover {
+    text-decoration: none;
+}
+:root{
+    --text-color: #636363;
+    --text-primary: #fb4226;
+    --text-primary-hover: #c7230a;
+    --text-white: #fff;
+}

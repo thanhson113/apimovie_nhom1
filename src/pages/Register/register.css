@@ -1,0 +1,39 @@
+.register {
+    background: url(../../assets//images/icons/bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    width: 100vw;
+    height: 100%;
+    padding: 7% 0;
+}
+.registerForm{
+    background: #fff;
+}
+.register .registerForm .input__line {
+    background: none;
+    border: none;
+    border-bottom: 1.5px solid #fb4226;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: none;
+}
+.register .registerForm .buttonRegister {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 5px 30px;
+    outline: none;
+    border: 1px solid #fb4226;
+    color: #fff;
+    background-color: #fb4226;
+    transition: .5s;
+}
+.register .registerForm input {
+    border: none;
+}
+.register .registerForm .registerLink {
+    color: #fb4226;
+    font-weight: 500;
+}

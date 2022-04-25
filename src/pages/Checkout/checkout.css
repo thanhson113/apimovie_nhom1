@@ -1,0 +1,44 @@
+.checkout{
+    padding: 30px 0 0;
+}
+.checkout__trapezoid {
+    border-bottom: 50px solid rgba(211, 208, 208, 0.595);
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 100%;
+    margin: auto;
+    filter: drop-shadow(0px 20px 32px rgba(8,8,8,0.38));
+    line-height:3.5;
+}
+.checkout__div{
+    width: 100%;
+    height: 20px;
+    background-color:#000;
+}
+.checkout__seat{
+    padding: 30px 0 0;
+}
+.seat{
+    width: 35px;
+    height: 35px;
+    background-color: gray;
+    margin: 12px;
+    color: #fff;
+}
+.seat__booked{
+    background-color: rgba(255, 0, 0, 0.545);
+    cursor: no-drop;
+}
+.seat__vip{
+    background-color: rgba(255, 98, 0, 0.905);
+}
+.seat__booking{
+    background-color: rgba(13, 255, 0, 0.545);
+}
+
+.mySeat__booked{
+    background-color: rgb(246,246,246);
+    box-shadow: -1px 2px 18px -6px #000;
+    color: orange;
+}

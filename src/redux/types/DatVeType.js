@@ -1,0 +1,5 @@
+export const GET_DS_PHONGVE = 'GET_DS_PHONGVE'
+export const DAT_VE = 'DAT_VE'
+export const DAT_VE_HOANTAT = 'DAT_VE_HOANTAT'
+export const ACTIVE_TAB = 'ACTIVE_TAB'
+export const NEXT_TAB = 'NEXT_TAB'

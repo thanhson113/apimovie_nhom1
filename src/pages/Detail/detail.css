@@ -1,0 +1,139 @@
+.glassmorphism {
+  margin: 0 auto;
+  background: rgba(16, 18, 27, 0.4);
+  backdrop-filter: blur(20px);
+  width: 100%;
+  padding: 50px 0;
+}
+
+.detail__btn {
+  padding: 10px
+}
+
+.detail__content {
+  color: var(--text-white);
+  font-size: 20px;
+}
+
+.detail__text {
+  font-size: 30px;
+  margin: 0;
+}
+
+.detail__content .ant-btn-primary {
+  color: #fff;
+  border-color: var(--text-primary);
+  background: var(--text-primary);
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+  width: 120px;
+  height: 40px;
+  font-size: 20px;
+
+}
+
+.detail__content .ant-btn-primary:hover,
+.detail__content .ant-btn-primary:focus {
+  color: #fff;
+  border-color: var(--text-primary-hover);
+  background: var(--text-primary-hover);
+}
+
+.detail__row {
+  display: flex;
+  align-items: center;
+}
+
+.detail__row img {
+  width: 220px;
+  height: 310px;
+  object-fit: cover;
+}
+
+.mainDetail .circlePercent {
+  position: relative;
+  font-size: 126px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mainDetail .circlePercent .circleBorder {
+  width: 1em;
+  height: 1em;
+  background: 0 0;
+  border: 7.5px solid #3a3a3a;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.mainDetail .circlePercent .circleValue {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  line-height: 2.4em;
+  font-size: 0.42em;
+  color: #fff;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.mainDetail .circlePercent .slice {
+  clip: rect(auto, auto, auto, auto);
+  position: absolute;
+  top: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.mainDetail .circlePercent .slice .bar {
+  position: absolute;
+  border: 0.06em solid #7ed321;
+  width: 1em;
+  height: 1em;
+  clip: rect(0, 0.5em, 1em, 0);
+  border-radius: 50%;
+}
+
+.mainDetail .circlePercent .slice .fill {
+  position: absolute;
+  border: 0.06em solid #7ed321;
+  width: 1em;
+  height: 1em;
+  clip: rect(0, 0.5em, 1em, 0);
+  border-radius: 50%;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.mainDetail .numbersReviewer {
+  color: #e8e7e7;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.detail__evalue {
+  text-align: center;
+}
+
+.detail__circle {
+  margin: auto;
+}
+
+.mainDetail .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--text-primary);
+}
+.mainDetail .ant-tabs-tab.ant-tabs-tab-btn {
+  color: var(--text-primary);
+}
+.mainDetail .ant-tabs-tab:hover {
+  color: var(--text-primary);
+}
+.mainDetail .ant-tabs-ink-bar{
+  background-color: var(--text-primary);
+}

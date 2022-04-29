@@ -11,6 +11,8 @@ import Register from './pages/Register/Register';
 import { CheckoutTemplate } from './templates/CheckoutTemplate/CheckoutTemplate';
 import Checkout from './pages/Checkout/Checkout';
 import { UserTemplate } from './templates/UserTemplate/UserTemplate';
+import Profile from './pages/Profile/Profile';
+
 export const history = createBrowserHistory();
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <Switch>
           <HomeTemplate path="/home" component={Home}/>
           <HomeTemplate path="/detail/:id" component={Detail}/>
+          <HomeTemplate path="/profile" component={Profile}/>
           <UserTemplate path="/login" component={Login}/>
           {/* <Route exact path="/login" component={Login}/> */}
           <UserTemplate  path="/register" component={Register}/>

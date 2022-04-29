@@ -1,4 +1,4 @@
-import { GET_MOVIE, SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../types/PhimType"
+import { GET_MOVIE, GET_TT_MOVIE, SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../types/PhimType"
 
 const movieState = {
   movieArr: [],

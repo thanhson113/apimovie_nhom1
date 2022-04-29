@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { datVe, layDSPhongVe } from '../../redux/actions/DatVeAction';
 import './checkout.css'
-import { CloseOutlined, UserOutlined } from '@ant-design/icons';
+import { CloseOutlined, UserOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { ACTIVE_TAB, DAT_VE } from '../../redux/types/DatVeType';
-import { Row, Col, Table, Tabs } from 'antd';
+import { Row, Col, Table, Tabs, Button } from 'antd';
 import { ThongTinDatVe } from '../../_core/model/ThongTinDatVe';
 import { layThongTinTaiKhoan } from '../../redux/actions/NguoiDungAction';
 import moment from 'moment'
+import { NavLink } from 'react-router-dom'
 function Checkout(props) {
   const { userLogin } = useSelector(state => state.nguoiDungReducer);
   const { chiTietPhongVe, dsGheDangDat } = useSelector(state => state.DatVeReducer);
@@ -79,7 +80,6 @@ function Checkout(props) {
           {
             ghe.daDat ? classGheUserDat !== '' ? <UserOutlined /> : <CloseOutlined /> : ghe.stt
           }
-
         </button>
       )
     })
@@ -162,26 +162,40 @@ function Checkout(props) {
 const { TabPane } = Tabs;
 
 
-
 const Demo = (props) => {
   const { activeTab } = useSelector(state => state.DatVeReducer);
   const dispatch = useDispatch();
-  return (
-    <Tabs defaultActiveKey="1" activeKey={activeTab} onChange={(key) => {
+  useEffect(() => {
+    return () => {
       dispatch({
         type: ACTIVE_TAB,
-        activeTab : key
+        activeTab: '1'
       })
-      
-    }} className="px-2" >
-      <TabPane tab="CHỌN GHẾ VÀ THANH TOÁN" key="1">
-        <Checkout {...props} />
-      </TabPane>
-      <TabPane tab="KẾT QUẢ ĐẶT VÉ" key="2">
-        <KetQuaDatVe {...props} />
-      </TabPane>
+    }
+  }, [])
+  const operations = <NavLink className="px-3 checkout__home" to="/home" >
+    Trang chủ
+  </NavLink>;
+  return (
+    <div className="checkout__tab">
+      <Tabs tabBarExtraContent={operations} defaultActiveKey="1" activeKey={activeTab} onChange={(key) => {
+        dispatch({
+          type: ACTIVE_TAB,
+          activeTab: key
+        })
 
-    </Tabs>
+      }} className="px-2" >
+        <TabPane tab="CHỌN GHẾ VÀ THANH TOÁN" key="1">
+          {/* Nhận các propsRouter */}
+          <Checkout {...props} />
+        </TabPane>
+        <TabPane tab="KẾT QUẢ ĐẶT VÉ" key="2">
+          <KetQuaDatVe {...props} />
+        </TabPane>
+      </Tabs>
+
+    </div>
+
   )
 }
 export default Demo;
@@ -191,7 +205,6 @@ function KetQuaDatVe(props) {
   const { thongTinNguoiDung } = useSelector(state => state.nguoiDungReducer);
   const { userLogin } = useSelector(state => state.nguoiDungReducer);
   const dispatch = useDispatch();
-  console.log(thongTinNguoiDung)
   useEffect(() => {
     callAPI()
   }, [])
@@ -202,16 +215,24 @@ function KetQuaDatVe(props) {
     return thongTinNguoiDung.thongTinDatVe?.map((ve, index) => {
       return (
         <div className="col-6" key={index}>
-          <div className="info__cinema d-flex my-3 border">
-            <img style={{ width: 50, height: 50, objectFit: 'cover' }} src={ve.hinhAnh} alt="" />
-            <div className="info__movie px-2">
-              <h5>{ve.tenPhim}</h5>
-              <p>Giờ chiếu: {moment(ve.ngayDat).format('hh:mm A')} - Ngày chiếu :{moment(ve.ngayChieu).format('DD-MM-YYYY')}</p>
-              <p>Tên hệ thống rap: {ve.danhSachGhe?.shift().tenHeThongRap}  </p>
-              <p>Tên rạp: {ve.danhSachGhe?.shift().tenCumRap} </p>
-              <div >Số ghế: {ve.danhSachGhe.map((ghe,index) => (<p key={index} style={{ margin: '0 5px', display: 'inline-block' }}>{ghe.tenGhe}</p>))} </div>
+          <div className="info__cinema d-flex my-3 ">
+            <div className="row my-3">
+              <div className="col-4">
+                <img style={{ width: '160px', height: '200px', objectFit: 'cover' }} src={ve.hinhAnh} alt="" />
 
+              </div>
+              <div className="col-8">
+                <div className="info__movie px-2">
+                  <h5 style={{fontWeight:600}}>{ve.tenPhim}</h5>
+                  <p>Giờ chiếu: {moment(ve.ngayDat).format('hh:mm A')} - Ngày chiếu :{moment(ve.ngayChieu).format('DD-MM-YYYY')}</p>
+                  <p>Tên hệ thống rạp: {[...ve.danhSachGhe]?.shift().tenHeThongRap}  </p>
+                  <p>Tên rạp: {[...ve.danhSachGhe]?.shift().tenCumRap} </p>
+                  <div >Số ghế: {ve.danhSachGhe.map((ghe, index) => (<p key={index} style={{ margin: '0 5px', display: 'inline-block' }}>{ghe.tenGhe}</p>))} </div>
+
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       )

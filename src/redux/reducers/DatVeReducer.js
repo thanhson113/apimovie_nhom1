@@ -34,6 +34,7 @@ export const DatVeReducer = (state = PhongVeState, action) => {
     }
     case NEXT_TAB :{
       state.activeTab = '2'
+      return {...state}
     }
   default:
     return state

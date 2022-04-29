@@ -101,31 +101,27 @@
 .movies__lists{
     padding:  0 0 50px ;
 }
-.movies__lists .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+.cineplex .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #000;
     text-shadow: 0 0 0.25px currentcolor;
     opacity: 1;
    
 }
-.movies__lists .ant-tabs-tab .ant-tabs-tab-btn{
+.cineplex .ant-tabs-tab .ant-tabs-tab-btn{
     opacity: 0.8;
 }
-.movies__lists .ant-tabs-tab:hover {
+.cineplex .ant-tabs-tab:hover {
     color: #000;
 
 }
-.movies__lists .ant-tabs-tab .ant-tabs-tab-btn:hover {
+.cineplex .ant-tabs-tab .ant-tabs-tab-btn:hover {
     opacity: 1;
 
 }
-.movies__lists .ant-tabs-ink-bar {
+.cineplex .ant-tabs-ink-bar {
     background: var(--text-primary);
 }
-/* .movies__lists .ant-tabs-nav-list {
-    height: 480px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-} */
+
 .list__phim{
     display:flex;
 }
@@ -143,10 +139,16 @@
 .list__time .ant-btn{
     margin: 10px 5px;
     height: 40px;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+
 }
 .list__time .ant-btn:hover, 
 .list__time .ant-btn:focus {
-    color: var(--text-primary);
+    color: #fff;
     border-color: var(--text-primary);
-    background: #fff;
+    background: var(--text-primary);
+}
+.movieslist__modal .ant-modal-body{
+    padding:0
 }

@@ -44,7 +44,7 @@ function HomeMenu(props) {
                                                     {
                                                         phim.lstLichChieuTheoPhim.slice(0, 10).map((lichChieu, index) => {
                                                             return (
-                                                                <NavLink to="/" key={index}>
+                                                                <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index}>
                                                                     <Button>{moment(lichChieu.ngayChieuGioChieu).format('LT')}</Button>
                                                                     
                                                                 </NavLink>
@@ -52,7 +52,7 @@ function HomeMenu(props) {
                                                         })
                                                     }
                                                 </div>
-
+                                                <hr/>
                                             </Fragment>
                                         )
                                     })}
@@ -66,7 +66,7 @@ function HomeMenu(props) {
         })
     }
     return (
-        <div className="movies__lists">
+        <div className="cineplex" id="cineplex">
             <h1  className="text-center">Cụm rạp</h1>
             <hr />
             <Tabs tabPosition={tabPosition}>

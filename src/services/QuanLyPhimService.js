@@ -8,6 +8,7 @@ class QuanLyPhimService {
     layDanhSachPhim = () => {
         return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`)
     }
+
 }
 
 export const quanLyPhimServices = new QuanLyPhimService()

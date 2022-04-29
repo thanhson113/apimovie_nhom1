@@ -1,0 +1,40 @@
+
+.date {
+    font-size: 11px
+}
+
+.comment-text {
+    font-size: 16px
+}
+
+.fs-12 {
+    font-size: 12px
+}
+
+.shadow-none {
+    box-shadow: none
+}
+
+.name {
+    color: var(--text-color);
+    font-weight:600;
+}
+
+.cursor:hover {
+    color: var(--text-primary);
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.textarea {
+    resize: none
+}
+.evaluate .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--text-primary);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}

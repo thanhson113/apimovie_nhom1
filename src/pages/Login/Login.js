@@ -7,36 +7,54 @@ import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import './login.css'
 import { dangNhap } from '../../redux/actions/NguoiDungAction';
-
 export default function Login() {
-  const {userLogin} = useSelector((state) => state.nguoiDungReducer);
+  const { userLogin, dangNhapFail } = useSelector((state) => state.nguoiDungReducer);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      taiKhoan:'',
+      taiKhoan: '',
       matKhau: '',
     },
-    onSubmit: (value) =>{
-        dispatch(dangNhap(value))
+    validationSchema: Yup.object({
+      taiKhoan: Yup.string()
+        .required('Tài khoản không được để trống'),
+      matKhau: Yup.string()
+        .required('Mật khẩu không được để trống'),
+    }),
+    onSubmit: (value) => {
+      dispatch(dangNhap(value))
     }
   })
- 
+
   return (
     <div className="login" >
       <div className="loginForm col-10 col-sm-10 col-md-6 col-lg-4 m-auto" >
-        <h2 className="text-center"><NavLink  to="/"><img src="./images/logo.png" /></NavLink></h2>
+        <h2 className="text-center"><NavLink to="/"><img src="./images/logo.png" /></NavLink></h2>
         <h2 className="text-center">Login</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="form-group row">
             <div className="col-sm-12">
-              <input type="username" className="form-control input__line" placeholder="Tài Khoản" name="taiKhoan" id="username" onChange={formik.handleChange}/>
-
+              <input type="username" className="form-control input__line" placeholder="Tài Khoản" name="taiKhoan" id="username"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.firstName}
+              />
+              {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
+                <div className="text-danger">{formik.errors.taiKhoan}</div>
+              ) : null}
+              <span className="text-danger">{dangNhapFail}</span>
             </div>
           </div>
           <div className="form-group row">
             <div className="col-sm-12">
-              <input type="password" className="form-control input__line" placeholder="Mật Khẩu" name="matKhau" id="password" onChange={formik.handleChange}/>
-
+              <input type="password" className="form-control input__line" placeholder="Mật Khẩu" name="matKhau" id="password" 
+               onChange={formik.handleChange}
+               onBlur={formik.handleBlur}
+               value={formik.values.firstName}
+              />
+              {formik.touched.matKhau && formik.errors.matKhau ? (
+                <div className="text-danger">{formik.errors.matKhau}</div>
+              ) : null}
             </div>
           </div>
           <div className="form-group row" style={{ alignItems: 'center' }}>

@@ -7,6 +7,10 @@
     width: 100%;
     z-index: 10;
 }
+.header__login:hover,
+.header__register:hover{
+    color: var(--text-primary);
+}
 .header .header__logo
 {
     width: 50px;
@@ -37,6 +41,9 @@
 }
 .header__login:hover, .header__register:hover{
     color:var(--text-primary);
+}
+.header .dropdown-toggle::after{
+    color: #000;
 }
 
 

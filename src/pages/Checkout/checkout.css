@@ -42,3 +42,23 @@
     box-shadow: -1px 2px 18px -6px #000;
     color: orange;
 }
+.checkout__tab .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: var(--text-primary);
+
+}
+.checkout__tab .ant-tabs-ink-bar {
+    background:  var(--text-primary);
+}
+.checkout__tab .ant-tabs-tab:hover {
+    color: var(--text-primary);
+}
+.checkout__home{
+    color: var(--text-color);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+.checkout__home:hover{
+    color: var(--text-primary);
+}

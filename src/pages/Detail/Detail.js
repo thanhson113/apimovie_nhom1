@@ -1,8 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './detail.css'
-import { Button, Tabs, Radio, Space, Rate } from 'antd';
-import star from '../../assets/images/icons/star1.png'
+import { Button, Tabs, Rate } from 'antd';
 import { getTTLichChieu } from '../../redux/actions/RapPhimAction'
 import moment from 'moment';
 import { NavLink } from 'react-router-dom';
@@ -39,14 +38,14 @@ export default function Detail(props) {
                         <div className="col-8">
                             <div className="row detail__row">
                                 <div className="col-4">
-                                    <img src={phimDetail.hinhAnh} alt="" />
+                                    <img style={{borderRadius:'3px'}} src={phimDetail.hinhAnh} alt="" />
                                 </div>
                                 <div className="col-8">
                                     <div className="detail__content">
                                         <span>Ngày chiếu: {moment(phimDetail.ngayKhoiChieu).format("DD - MM - YYYY")}</span>
                                         <p className="detail__text">{phimDetail.tenPhim}</p>
-                                        <p>120 phút - 5.7 IMDb - 2D/Digitals</p>
-                                        {/* <Button type="primary">Mua vé</Button> */}
+                                        <p>120 phút - 5.7 IMDb - 2D/Digitals  
+                                        </p>
                                     </div>
                                 </div>
                             </div>

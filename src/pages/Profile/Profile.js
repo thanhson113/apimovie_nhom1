@@ -58,7 +58,7 @@ export default function Profile(props) {
                               </div>
                               <div className="about">
                                   <h5>About</h5>
-                                  <p>I'm {thongTinNguoiDung.hoTen}. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+                                  <p>I'm {thongTinNguoiDung.hoTen}. Front-End Developer I enjoy creating user-centric, delightful and human experiences.</p>
                               </div>
                           </div>
                       </div>
@@ -143,8 +143,7 @@ export default function Profile(props) {
                           <div className="row gutters">
                               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                   <div className="text-right">
-                                      <button type="button"  name="submit" className="btn btn-secondary mx-2">Cancel</button>
-                                      <button type="submit"  name="submit" className="btn btn-primary">Update</button>
+                                      <button type="submit"  name="submit" className="btn btn-danger">Update</button>
                                   </div>
                               </div>
                           </div>

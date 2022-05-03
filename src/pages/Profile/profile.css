@@ -1,5 +1,5 @@
 .profile{
-    padding: 100px 0;
+    padding: 150px 0;
 }
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
@@ -31,7 +31,7 @@
 }
 .account-settings .about h5 {
     margin: 0 0 15px 0;
-    color: #007ae1;
+    color: var(--text-primary);
 }
 .account-settings .about p {
     font-size: 0.825rem;

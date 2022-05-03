@@ -15,7 +15,6 @@ export const DatVeReducer = (state = PhongVeState, action) => {
     case DAT_VE :{
       let mangCapNhat = state.dsGheDangDat;
       let index = mangCapNhat.findIndex(ghe => ghe.maGhe === action.gheDuocChon.maGhe)
-      console.log(index)
       if(index !== -1){
         mangCapNhat.splice(index,1);
       }else{

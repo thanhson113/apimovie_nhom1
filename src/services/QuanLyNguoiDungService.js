@@ -7,7 +7,7 @@ class QuanLyNguoiDungService  {
         return http.post('api/QuanLyNguoiDung/DangNhap',thongTinDangNhap)
     }
     dangKy = (thongTinDangKi) => {
-            return http.post('api/QuanLyNguoiDung/DangKy',thongTinDangKi)
+        return http.post('api/QuanLyNguoiDung/DangKy',thongTinDangKi)
     }
     layThongTinNguoiDung = () => {
         return http.post('api/QuanLyNguoiDung/ThongTinTaiKhoan')

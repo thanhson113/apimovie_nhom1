@@ -1,6 +1,6 @@
 import { history } from '../../App'
 import { quanLyNguoiDungService } from '../../services/QuanLyNguoiDungService'
-import { DANG_NHAP,DANG_KY, GET_TT_NGUOIDUNG, DANG_NHAP_FAIL, CAP_NHAT_ND } from '../types/NguoiDungType'
+import { DANG_NHAP,DANG_KY, GET_TT_NGUOIDUNG, DANG_NHAP_FAIL, CAP_NHAT_ND, DANG_KY_FAIL } from '../types/NguoiDungType'
 
 export const dangNhap = (thongTinDangNhap) => {
     return async (dispatch) => {
@@ -29,7 +29,10 @@ export const dangKy = (thongTinDangKi) => {
                 userRegister : result.data.content
             })
         }catch(err) {
-            console.log(err.response.data)
+            dispatch({
+                type: DANG_KY_FAIL,
+                dangKyFail: err.response.data.content
+            })
         }
     }
 }

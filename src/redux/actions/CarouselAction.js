@@ -1,4 +1,3 @@
-
 import { GET_CAROUSEL } from "../types/CarouselType";
 import { quanLyPhimServices } from "../../services/QuanLyPhimService";
 export const getCarousel = () => {

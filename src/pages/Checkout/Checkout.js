@@ -4,14 +4,14 @@ import { datVe, layDSPhongVe } from '../../redux/actions/DatVeAction';
 import './checkout.css'
 import { CloseOutlined, UserOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { ACTIVE_TAB, DAT_VE } from '../../redux/types/DatVeType';
-import { Row, Col, Table, Tabs, Button } from 'antd';
+import { Row, Col, Table, Tabs, Button, Tag, Divider } from 'antd';
 import { ThongTinDatVe } from '../../_core/model/ThongTinDatVe';
 import { layThongTinTaiKhoan } from '../../redux/actions/NguoiDungAction';
 import moment from 'moment'
 import { NavLink } from 'react-router-dom'
 function Checkout(props) {
   const { userLogin } = useSelector(state => state.nguoiDungReducer);
-  const { chiTietPhongVe, dsGheDangDat } = useSelector(state => state.DatVeReducer);
+  const { chiTietPhongVe, dsGheDangDat } = useSelector(state => state.DatVeReducer);  
   const dispatch = useDispatch();
   useEffect(() => {
     callAPI()
@@ -78,6 +78,7 @@ function Checkout(props) {
           }}
         >
           {
+            // Nếu user đặt rồi thì render ra icon user. Người khác đặt thì render ra icon x
             ghe.daDat ? classGheUserDat !== '' ? <UserOutlined /> : <CloseOutlined /> : ghe.stt
           }
         </button>
@@ -105,31 +106,27 @@ function Checkout(props) {
             </div>
           </div>
           <div className="col-4">
-            <h4 className="text-center text-danger">
+            <h4 className="text-center" style={{color:'#fb4226'}}>
               {dsGheDangDat.reduce((total, gheDD) => { return total += gheDD.giaVe }, 0).toLocaleString()} VND
             </h4>
             <hr />
             <div className="checkout__movie">
               <h4 className="font-weight-bold">{thongTinPhim.tenPhim}</h4>
-              <p>Địa điểm: {thongTinPhim.diaChi}</p>
-              <p>Ngày chiếu: {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu} {thongTinPhim.tenRap}</p>
+              <p>Địa điểm:   <span className="font-weight-bold">{thongTinPhim.diaChi}</span></p>
+              <p>Ngày chiếu: <span className="font-weight-bold">{thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu} {thongTinPhim.tenRap}</span></p>
             </div>
             <hr />
             <div className="checkout__seat ">
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-12">
                   <h5>Ghế</h5>
                   <div className="">
                     {dsGheDangDat.sort((a, b) => a.stt - b.stt).map(gheDD => {
-                      return <p className="text-danger px-2 d-inline-block" key={gheDD.stt}>{gheDD.stt}</p>
+                      return <Tag style={{margin:'5px', padding:'5px', fontSize:'15px', borderRadius:'5px'}} key={gheDD.stt} color="#fb4226">{gheDD.stt} - {gheDD.giaVe.toLocaleString()} VND</Tag>
                     })}
                   </div>
                 </div>
-                <div className="col-md-4">
-                  <span style={{ fontSize: 16, fontWeight: 600 }}>
-                    {dsGheDangDat.reduce((total, gheDD) => { return total += gheDD.giaVe }, 0).toLocaleString()} VND
-                  </span>
-                </div>
+
               </div>
             </div>
             <hr />
@@ -143,7 +140,7 @@ function Checkout(props) {
               <p>{userLogin.soDT}</p>
             </div>
             <hr />
-            <button className="btn btn-danger w-100" style={{ fontSize: 20 }}
+            <button className="w-100" style={{ fontSize: 20, backgroundColor:'#fb4226', color:'#fff', borderColor:'transparent' }}
               onClick={() => {
                 let thongTinDatVe = new ThongTinDatVe();
                 thongTinDatVe.maLichChieu = id;
@@ -218,16 +215,18 @@ function KetQuaDatVe(props) {
           <div className="info__cinema d-flex my-3 ">
             <div className="row my-3">
               <div className="col-4">
-                <img style={{ width: '160px', height: '200px', objectFit: 'cover' }} src={ve.hinhAnh} alt="" />
+                <img style={{ width: '160px', height: '200px', objectFit: 'cover', borderRadius:'3px' }} src={ve.hinhAnh} alt="" />
 
               </div>
               <div className="col-8">
                 <div className="info__movie px-2">
                   <h5 style={{fontWeight:600}}>{ve.tenPhim}</h5>
-                  <p>Giờ chiếu: {moment(ve.ngayDat).format('hh:mm A')} - Ngày chiếu :{moment(ve.ngayChieu).format('DD-MM-YYYY')}</p>
-                  <p>Tên hệ thống rạp: {[...ve.danhSachGhe]?.shift().tenHeThongRap}  </p>
-                  <p>Tên rạp: {[...ve.danhSachGhe]?.shift().tenCumRap} </p>
-                  <div >Số ghế: {ve.danhSachGhe.map((ghe, index) => (<p key={index} style={{ margin: '0 5px', display: 'inline-block' }}>{ghe.tenGhe}</p>))} </div>
+                  <p className="">
+                    Giờ chiếu: <span className="font-weight-bold">{moment(ve.ngayDat).format('hh:mm A')} </span>
+                    - Ngày chiếu : <span className="font-weight-bold">{moment(ve.ngayChieu).format('DD-MM-YYYY')}</span></p>
+                  <p>Hệ thống rạp: <span className="font-weight-bold">{[...ve.danhSachGhe]?.shift().tenHeThongRap} </span> </p>
+                  <p>Tên rạp: <span className="font-weight-bold">{[...ve.danhSachGhe]?.shift().tenCumRap}</span> </p>
+                  <div >Số ghế: <span className="font-weight-bold">{ve.danhSachGhe.map((ghe, index) => (<p key={index} style={{ margin: '0 5px', display: 'inline-block' }}>{ghe.tenGhe}</p>))}</span> </div>
 
                 </div>
               </div>
@@ -243,7 +242,7 @@ function KetQuaDatVe(props) {
       <div className="container">
         <div className="text-center ">
           <h3 className="text-danger">Kết quả đặt vé</h3>
-          <p>Hãy xem thông tin địa chỉ và thời gian để xem phim vui vẻ bạn nhé !</p>
+          <p style={{fontSize:'16px'}}>Hãy xem thông tin địa chỉ và thời gian để xem phim vui vẻ bạn nhé !</p>
         </div>
         <div className="row">
           {renderThongTinNguoiDung()}

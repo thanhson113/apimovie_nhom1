@@ -11,8 +11,7 @@ import Carousel from './Carousel/Carousel';
 import { NavLink } from 'react-router-dom'
 import Article from './Article/Article';
 import Introduce from './Introduce/Introduce';
-import "video-react/dist/video-react.css";
-import { Player } from 'video-react';
+
 export default function Home() {
   const { Meta } = Card;
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -59,7 +58,6 @@ export default function Home() {
   }
 
   const renderMovie = () => {
-
     return movieArr.map(movie => {
       return (
         <div key={movie.maPhim}>
@@ -103,8 +101,9 @@ export default function Home() {
             }}>Sắp chiếu</Button>
           </div>
           {movieArr.length <= 7 ? <Slider {...settings2} >{renderMovie()}</Slider> : <Slider {...settings} >{renderMovie()}</Slider>}
-          <Modal wrapClassName="movieslist__modal" footer={null} title="Trailer" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
-            <iframe className="movielist__iframe" width="100%" height="315"
+          {/* Modal */}
+          <Modal wrapClassName="movieslist__modal" footer={null} title="Trailer" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}   width={700}>
+            <iframe className="movielist__iframe" width="100%" height="400"
               src={trailer} >
             </iframe >
           </Modal >

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
-import { DatePicker, Space, Alert } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector,useDispatch } from 'react-redux';
 import './register.css'
 import {dangKy} from '../../redux/actions/NguoiDungAction'
 export default function Register() {
+  const {dangKyFail, userRegister} = useSelector(state => state.nguoiDungReducer);
+  console.log(userRegister)
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -32,18 +33,20 @@ export default function Register() {
     }),
     onSubmit: (values, onSubmitProps) => {
       dispatch(dangKy(values))
-      onSubmitProps.resetForm()
+      if(Object.values(userRegister).length === 0){
+    
+      }else{
+        console.log('a')
+        onSubmitProps.resetForm()
+      }
     },
   });
-  const handleReset = (event) => {
-    console.log(event)
-  }
   return (
     <div className="register">
       <div className="registerForm col-10 col-sm-10 col-md-8 col-lg-5 m-auto">
         <h2 className="text-center"><NavLink to="/"><img src="./images/logo.png" /></NavLink></h2>
         <h2 className="text-center">Register</h2>
-        <form onSubmit={formik.handleSubmit} onReset={handleReset()}>
+        <form onSubmit={formik.handleSubmit} >
           <div className="form-group row">
             <div className="col-12 col-sm-6">
               <input type="text" name="hoTen" className="form-control input__line" placeholder="Họ Tên"

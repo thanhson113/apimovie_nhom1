@@ -1,20 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import './header.css'
 import logo from '../../../../assets/images/favicon.co.png'
 import avatar from '../../../../assets/images/avatars/avatar1.jpg'
 import { ACCESS_TOKEN, USER_LOGIN } from '../../../../util/Setting'
+import history from 'history'
 export default function Header() {
     const { userLogin } = useSelector((state) => state.nguoiDungReducer)
-
+    const [menu, setMenu] = useState([
+        {
+            id: 1, tabTitle: "Lịch chiếu", tabClicked: false, href: "movielist"
+        },
+        {
+            id: 2, tabTitle: "Cụm rạp", tabClicked: false, href: "cineplex"
+        },
+        {
+            id: 3, tabTitle: "Tin tức", tabClicked: false, href: "article"
+        },
+        {
+            id: 4, tabTitle: "Ứng dụng", tabClicked: false, href: "introduce"
+        },
+    ])
+    const [active, setActive] = useState(null)
     const renderUserLogin = () => {
         if (Object.values(userLogin).length === 0) {
             // Kiểm tra object userLogin có bằng rỗng hay không
             return (
                 <>
                     <NavLink to="/login" className="mx-1 header__login">
-                        <img className="header__avatar" src={logo} alt="" />
                         Đăng nhập
                     </NavLink>
                     |
@@ -29,7 +43,7 @@ export default function Header() {
             return (
                 <div className="dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
-                        <img style={{ width: 35, height:35, objectfit: 'cover', borderRadius: '50%', margin: '0 10px'}} src={avatar} />
+                        <img style={{ width: 35, height: 35, objectfit: 'cover', borderRadius: '50%', margin: '0 10px' }} src={avatar} />
                         <span className="text-dark">
                             {userLogin.hoTen}
                         </span>
@@ -37,15 +51,27 @@ export default function Header() {
                     <div className="dropdown-menu" >
                         <NavLink className="dropdown-item" to="/profile">Thông tin</NavLink>
                         <div className="dropdown-divider" />
-                        <button className="dropdown-item" onClick={()=> {
+                        <button className="dropdown-item" onClick={() => {
                             localStorage.removeItem(USER_LOGIN)
                             localStorage.removeItem(ACCESS_TOKEN)
                             window.location.reload()
-                            }}>Đăng xuất</button>
+                            window.location.pathname = ('/home')
+                        }}>Đăng xuất</button>
                     </div>
                 </div>
             )
         }
+    }
+    const renderMenu = () => {
+        return menu.map(item => {
+            return (
+                <li className={`nav-item  header__item ${active == item.id ? 'active' : ''}`} key={item.id} onClick={() => {
+                    setActive(item.id)
+                }}>
+                    <a className="nav-link header__link" href={`#${item.href}`}>{item.tabTitle}</a>
+                </li>
+            )
+        })
     }
     return (
         <header className="header">
@@ -59,10 +85,8 @@ export default function Header() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav m-auto header__list">
-                            <li className="nav-item active header__item">
-                                <a className="nav-link header__link" href="#movielist">Lịch chiếu</a>
-                            </li>
-                            <li className="nav-item header__item">
+                            {renderMenu()}
+                            {/* <li className="nav-item header__item">
                                 <a className="nav-link header__link" href="#cineplex">Cụm rạp</a>
                             </li>
                             <li className="nav-item header__item">
@@ -70,16 +94,18 @@ export default function Header() {
                             </li>
                             <li className="nav-item header__item">
                                 <a className="nav-link header__link" href="#introduce">Ứng dụng</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="header__right">
-                        {renderUserLogin()}
+                            </li> */}
 
+                        </ul>
+                        <div className="header__right">
+                            {renderUserLogin()}
+                        </div>
                     </div>
+
                 </nav>
             </div>
         </header>
 
     )
 }
+

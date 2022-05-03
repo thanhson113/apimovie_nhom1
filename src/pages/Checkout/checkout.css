@@ -25,9 +25,11 @@
     background-color: gray;
     margin: 12px;
     color: #fff;
+    border-radius: 5px;
+    border-color: transparent;
 }
 .seat__booked{
-    background-color: rgba(255, 0, 0, 0.545);
+    background-color: rgba(255, 0, 0, 0.86);
     cursor: no-drop;
 }
 .seat__vip{
@@ -61,4 +63,11 @@
 }
 .checkout__home:hover{
     color: var(--text-primary);
+}
+.info__movie p {
+    font-size: 15px;
+    margin: 10px 0;
+}
+.checkout .ant-table-pagination.ant-pagination {
+    display:none;
 }

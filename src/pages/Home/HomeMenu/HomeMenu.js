@@ -33,7 +33,7 @@ function HomeMenu(props) {
                                         return (
                                             <Fragment key={index}>
                                                 <div className="list__phim">
-                                                    <img style={{ width: 100, height: 100, padding: '10px 0', objectFit: 'cover' }} src={phim.hinhAnh} alt="" />
+                                                    <img style={{ width: 100, height: 100, objectFit: 'cover', borderRadius:'3px', margin:'0 0 10px' }} src={phim.hinhAnh} alt="" />
                                                     <div className="list__info">
                                                         <p style={{}}>{phim.tenPhim}</p>
                                                         <span>{cumRap.diaChi}</span>

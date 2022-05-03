@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router';
-import { Alert } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
@@ -30,7 +28,10 @@ export default function Login() {
     <div className="login" >
       <div className="loginForm col-10 col-sm-10 col-md-6 col-lg-4 m-auto" >
         <h2 className="text-center"><NavLink to="/"><img src="./images/logo.png" /></NavLink></h2>
-        <h2 className="text-center">Login</h2>
+        <h2 className="text-center">
+          Login
+          </h2>
+          <span className="text-danger d-flex justify-content-center">{dangNhapFail}</span>
         <form onSubmit={formik.handleSubmit}>
           <div className="form-group row">
             <div className="col-sm-12">
@@ -42,7 +43,7 @@ export default function Login() {
               {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
                 <div className="text-danger">{formik.errors.taiKhoan}</div>
               ) : null}
-              <span className="text-danger">{dangNhapFail}</span>
+              
             </div>
           </div>
           <div className="form-group row">

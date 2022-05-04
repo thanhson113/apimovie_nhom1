@@ -34,7 +34,8 @@ export default function Article() {
                     </div>
                     <div className="row pt-2 newsMovieS">
                         <div className="col-12 col-sm-8  newsMovieS__left">
-                            <div className="col-12 col-sm-6  pb-2 newsMovieS_left__item">
+                           <div className="row">
+                           <div className="col-12 col-sm-6  pb-2 newsMovieS_left__item">
                                 <a href="#"><img className="w-100 b-block" src="./images/icons/article/1.png" /></a>
                                 <a href="#" className="articleTitle">PROMISING YOUNG WOMAN | Bông hồng nước Anh Carey Mulligan và màn trả thù đàn ông để đời</a>
                                 <p className="articleContent">Đề cử giải Oscar danh giá vừa gọi tên Carey Mulligan ở hạng mục nữ chính xuất sắc nhất cho vai diễn "đẫm máu" nhất sự nghiệp của cô trong phim Promising Young Woman (tựa Việt: Cô Gái Trẻ Hứa Hẹn). </p>
@@ -52,6 +53,7 @@ export default function Article() {
                                     <img src="./images/icons/comment.png" />
                                 </div>
                             </div>
+                           </div>
                         </div>
                         <div className="col-12 col-sm-4 listNews">
                             <div className="col-12 listNewsItem">

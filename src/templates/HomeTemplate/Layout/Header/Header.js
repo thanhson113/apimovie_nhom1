@@ -84,18 +84,8 @@ export default function Header() {
                         <span className="navbar-toggler-icon" />
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav m-auto header__list">
+                        <ul className="navbar-nav header__list">
                             {renderMenu()}
-                            {/* <li className="nav-item header__item">
-                                <a className="nav-link header__link" href="#cineplex">Cụm rạp</a>
-                            </li>
-                            <li className="nav-item header__item">
-                                <a className="nav-link header__link" href="#article">Tin tức</a>
-                            </li>
-                            <li className="nav-item header__item">
-                                <a className="nav-link header__link" href="#introduce">Ứng dụng</a>
-                            </li> */}
-
                         </ul>
                         <div className="header__right">
                             {renderUserLogin()}

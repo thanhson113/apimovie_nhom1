@@ -86,7 +86,7 @@ export default function Footer() {
                             <a href="#"><img src={android}/></a>
                             <a href="#"><img src={apple}/></a>
                         </div>
-                        <div className="col-12 col-sm-12 col-md-6 footer__social">
+                        <div className="col-6 col-md-6 footer__social">
                             <p className="footer__title hideOnMobile">SOCIAL</p>
                             <a href="#"><img src={facebook}/></a>
                             <a href="#"><img src={zalo}/></a>
@@ -96,7 +96,7 @@ export default function Footer() {
                 <hr id="hrFooter"/>
                 <div className="row footer__add">
                     <div className="col-12 col-sm-12 col-md-1 p-0">
-                        <img className="imgZion" src={zion} style={{width:'100%', borderRadius:'10px', cursor:'pointer'}}/>
+                        <img className="imgZion img-fluid" src={zion} style={{ borderRadius:'10px', cursor:'pointer'}}/>
                     </div>
                     <div className="col-12 col-sm-12 col-md-8 pr-0 address__detail">
                         <p className="footer__title">TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</p>
@@ -107,7 +107,7 @@ export default function Footer() {
                         <p>Email: <a href="#" style={{color:'red'}}>support@tix.vn</a></p>
                     </div>
                     <div className="col-12 col-sm-12 col-md-2 p-0">
-                        <img className="imgBoCo" src={bocongthuong} style={{width:'100%', cursor:'pointer'}}/>
+                        <img className="imgBoCo img-fluid" src={bocongthuong} style={{ cursor:'pointer'}}/>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import HomeMenu from './HomeMenu/HomeMenu'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPhim } from '../../redux/actions/PhimAction';
-import Slider from "react-slick";
 import './home.css'
 import { Button, Card, Modal } from 'antd';
 import { SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from '../../redux/types/PhimType';
@@ -11,11 +10,13 @@ import Carousel from './Carousel/Carousel';
 import { NavLink } from 'react-router-dom'
 import Article from './Article/Article';
 import Introduce from './Introduce/Introduce';
-
+import { ArrowRightOutlined } from '@ant-design/icons';
 export default function Home() {
   const { Meta } = Card;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [trailer, setTrailer] = useState('')
+  const [visible, setVisible] = useState(8)
+  console.log(visible)
   const { movieArr, dangChieu, sapChieu } = useSelector((state) => state.movieReducers)
   const { rapPhimArr } = useSelector((state) => state.rapPhimReducer)
   const dispatch = useDispatch()
@@ -23,23 +24,7 @@ export default function Home() {
     callAPI()
 
   }, [])
-  const settings = {
-    infinite: true,
-    slidesToShow: 4,
-    speed: 500,
-    rows: 2,
-    slidesPerRow: 1,
-    slidesToScroll: 4,
-  };
-  const settings2 = {
-    infinite: true,
-    slidesToShow: 4,
-    speed: 500,
-    rows: 1,
-    slidesPerRow: 1,
-    slidesToScroll: 4,
-  };
-
+  
   const showModal = (trailer) => {
     setTrailer(trailer)
     setIsModalVisible(true);
@@ -58,13 +43,12 @@ export default function Home() {
   }
 
   const renderMovie = () => {
-    return movieArr.map(movie => {
+    return movieArr.slice(0,visible).map(movie => {
       return (
-        <div key={movie.maPhim}>
-          <Card
+        <div className="col-sm-6 col-lg-3 col-md-4" key={movie.maPhim}>
+          <Card 
             hoverable
-            style={{ width: 240, height: 450 }}
-            cover={<img alt="example" src={movie.hinhAnh} style={{ height: 315, objectFit: 'cover' }} />}
+            cover={<img alt="example" src={movie.hinhAnh} style={{ height: 315, objectFit: 'cover', borderRadius:'5px' }} />}
           >
             <Meta style={{ textAlign: 'center' }} title={movie.tenPhim} />
             <NavLink to={`/detail/${movie.maPhim}`} className="btn movielist__btn">Đặt vé</NavLink>
@@ -77,18 +61,19 @@ export default function Home() {
             <div className="movieList__overLay">
             </div>
           </Card>
-
         </div>
-
       )
     })
+  }
+  const showMoreItem = () => {
+    setVisible(movieArr.length)
   }
   return (
     <>
       <Carousel />
-      <div className="container">
+      <div className="container-xl">
         <section className="movielist" id="movielist">
-          <div className="movielist__tabs text-center mb-5">
+          <div className="movielist__tabs text-center">
             <Button className={dangChieu ? 'movielist_link active' : 'movielist_link'} type="link" onClick={() => {
               dispatch({
                 type: SET_PHIM_DANG_CHIEU
@@ -99,8 +84,14 @@ export default function Home() {
                 type: SET_PHIM_SAP_CHIEU
               })
             }}>Sắp chiếu</Button>
+            <div className="row my-5">
+              {renderMovie()}
+            </div>
+            <div className="movielist_btn">
+              {/* Đúng thì trả về kết quả cuối cùng */}
+              {visible < movieArr.length && <Button onClick={showMoreItem}>Xem thêm <ArrowRightOutlined /></Button>}
+            </div>
           </div>
-          {movieArr.length <= 7 ? <Slider {...settings2} >{renderMovie()}</Slider> : <Slider {...settings} >{renderMovie()}</Slider>}
           {/* Modal */}
           <Modal wrapClassName="movieslist__modal" footer={null} title="Trailer" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}   width={700}>
             <iframe className="movielist__iframe" width="100%" height="400"

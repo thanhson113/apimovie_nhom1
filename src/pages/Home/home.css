@@ -1,15 +1,3 @@
-.movielist .slick-prev:before,
-.movielist .slick-next:before  {
-    color: gray;
-    font-size:50px;
-}
-.movielist .slick-prev,
-.movielist .slick-next  {
-    top: 40%;
-}
-.movielist .slick-prev{
-    left:-90px;
-}
 
 .movielist  .movielist__btn{
     position: absolute;
@@ -56,8 +44,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 70%;
+    height: 83%;
     transition:all .5s;
+    border-radius:5px;
 }
 .movielist .ant-card-hoverable:hover .movieList__overLay{
     background: #000;
@@ -90,7 +79,7 @@
 .movielist__tab{
     display: flex;
     text-align: left;
-    width: 300px;
+    width: 250px;
 }
 .movielist__tab img{
     margin-right: 10px;
@@ -136,7 +125,23 @@
 .list__info span{
     color: var(--text-color)
 }
-.list__time .ant-btn{
+.movielist{
+    padding: 0 0 100px;
+}
+.movielist_btn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 40px;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    font-size: 18px;
+    padding: 20px 20px;
+}
+.list__time .ant-btn
+{   
+    width: 93px;
     margin: 10px 5px;
     height: 40px;
     color: var(--text-primary);
@@ -144,11 +149,64 @@
 
 }
 .list__time .ant-btn:hover, 
-.list__time .ant-btn:focus {
+.list__time .ant-btn:focus ,
+ .movielist_btn button:hover,
+ .movielist_btn button:focus{
     color: #fff;
     border-color: var(--text-primary);
     background: var(--text-primary);
 }
 .movieslist__modal .ant-modal-body{
     padding:0
+}
+
+.cineplex .ant-collapse > .ant-collapse-item {
+    /* border-bottom: none; */
+}
+.cineplex .ant-collapse{
+    margin: 0 0 15px;
+}
+.cineplex .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow{
+    vertical-align: -10px;
+}
+
+/* .cineplex .ant-collapse{
+    display:none;
+} */
+/*  Responsive */
+@media screen and (max-width: 992px){
+    .movielist__tab img{
+        display:none;
+    }
+    .cineplex .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap{
+        overflow-x: auto;
+    }
+    .cineplex .ant-tabs-left > .ant-tabs-nav .ant-tabs-tab{
+        padding: 8px;
+    }
+}
+@media screen and (max-width: 768px){
+    /* .cineplex .ant-collapse{
+        display:block;
+    }
+    .cineplex .cineplex__tabcontent{
+        display:none;
+    } */
+}
+@media screen and (max-width: 576px){
+    .list__phim{
+        flex-direction: column;
+    }
+    .list__info{
+        padding: 0
+    }
+    .list__info p{
+        font-size: 15px;
+    }
+    .cineplex .ant-collapse > .ant-collapse-item > .ant-collapse-header{
+        padding: 12px 5px;
+    }
+     .article .article__content .list__film .newsMovieS .newsMovieS__left{
+        
+    }
 }

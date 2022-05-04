@@ -12,8 +12,11 @@ export const movieReducers = (state = movieState, action) => {
     case GET_MOVIE: {
       state.movieArr = action.movieArr;
       state.arrPhimDefault = state.movieArr;
+      state.dangChieu = true;
+      state.sapChieu = false;
       let mangCapNhat = [...state.arrPhimDefault];
       state.movieArr = mangCapNhat.filter(movie => movie.dangChieu === state.dangChieu);
+      console.log( state.movieArr )
       return { ...state }
     }
     case SET_PHIM_DANG_CHIEU: {
@@ -28,6 +31,7 @@ export const movieReducers = (state = movieState, action) => {
       state.dangChieu = false;
       let mangCapNhat = [...state.arrPhimDefault];
       state.movieArr = mangCapNhat.filter(movie => movie.sapChieu === state.sapChieu);
+      console.log( state.movieArr )
       return { ...state }
     }
     default:

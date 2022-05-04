@@ -24,6 +24,9 @@
 .header .header__avatar{
     width: 30px;
 }
+.header__list{
+    margin: auto;
+}
 .header .header__list .header__item a {
     font-size: 18px;
     transition: all .5s;
@@ -55,4 +58,16 @@
     background-color: var(--text-primary)
 }
 
+/* Responsive */
+@media screen and (max-width: 992px){
+    .header .navbar-collapse{
+        text-align: center;
+    }
+    .header__right{
+        margin: 20px 0;
+    }
+    .header .header__logo{
+        margin: 0;
+    }
+}
 

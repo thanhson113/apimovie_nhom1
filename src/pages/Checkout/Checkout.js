@@ -89,7 +89,7 @@ function Checkout(props) {
     <section className="checkout">
       <div className="container-fluid ">
         <div className="row">
-          <div className="col-8">
+          <div className="col-12 col-lg-8">
             <div className="checkout__screen">
               <div className="checkout__div"></div>
               <div className="checkout__trapezoid text-center">
@@ -105,7 +105,7 @@ function Checkout(props) {
               </div>
             </div>
           </div>
-          <div className="col-4">
+          <div style={{margin: '50px 0'}} className="col-12 col-lg-4 ">
             <h4 className="text-center" style={{color:'#fb4226'}}>
               {dsGheDangDat.reduce((total, gheDD) => { return total += gheDD.giaVe }, 0).toLocaleString()} VND
             </h4>
@@ -211,11 +211,11 @@ function KetQuaDatVe(props) {
   const renderThongTinNguoiDung = () => {
     return thongTinNguoiDung.thongTinDatVe?.map((ve, index) => {
       return (
-        <div className="col-6" key={index}>
+        <div className="col-12 col-lg-6" key={index}>
           <div className="info__cinema d-flex my-3 ">
             <div className="row my-3">
               <div className="col-4">
-                <img style={{ width: '160px', height: '200px', objectFit: 'cover', borderRadius:'3px' }} src={ve.hinhAnh} alt="" />
+                <img className="img-fluid"style={{ height: '200px', objectFit: 'cover', borderRadius:'3px' }} src={ve.hinhAnh} alt="" />
 
               </div>
               <div className="col-8">
@@ -239,7 +239,7 @@ function KetQuaDatVe(props) {
   }
   return (
     <div className="info">
-      <div className="container">
+      <div className="container-xl">
         <div className="text-center ">
           <h3 className="text-danger">Kết quả đặt vé</h3>
           <p style={{fontSize:'16px'}}>Hãy xem thông tin địa chỉ và thời gian để xem phim vui vẻ bạn nhé !</p>

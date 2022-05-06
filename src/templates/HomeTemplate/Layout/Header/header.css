@@ -66,6 +66,9 @@
     .header__right{
         margin: 20px 0;
     }
+    .header__right .dropdown-menu{
+        left:43%
+    }
     .header .header__logo{
         margin: 0;
     }

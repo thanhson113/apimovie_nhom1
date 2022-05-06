@@ -128,14 +128,37 @@
 .mainDetail .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: var(--text-primary);
 }
+
 .mainDetail .ant-tabs-tab.ant-tabs-tab-btn {
   color: var(--text-primary);
 }
+
 .mainDetail .ant-tabs-tab:hover {
   color: var(--text-primary);
 }
-.mainDetail .ant-tabs-ink-bar{
+
+.mainDetail .ant-tabs-ink-bar {
   background-color: var(--text-primary);
 }
 
+.detail__collaspe {
+  display: none;
+}
 
+@media screen and (max-width: 768px) {
+  .detail__row {
+    text-align: center;
+  }
+
+  .detail__row img {
+    margin-bottom: 20px;
+  }
+  .detail__tabs .ant-tabs{
+    display: none;
+  }
+  .detail__collaspe {
+    display: block;
+  }
+
+
+}

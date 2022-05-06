@@ -28,7 +28,7 @@ import './footer.css'
 export default function Footer() {
     return (
         <div className="footer" id="footer">
-            <div className="container">
+            <div className="container-xl">
                 <div className="row footer__info">
                     <div className="col-12 col-sm-12 col-md-4 footer__detail">
                         <p id="footerTitleTix" className="footer__title">TIX</p>
@@ -49,35 +49,37 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-4 footer__partner hideOnMobile">
+                    <div className="col-12 col-sm-12 col-md-4 footer__partner hideOnMobile">
                         <p className="footer__title">ĐỐI TÁC</p>
-                        <div className="col-12 row">
+                        <div className="row">
+                        <div className="col-12 py-2">
                             <a href="#"><img src={cgv} style={{ backgroundColor: 'white' }} /></a>
                             <a href="#"><img src={bhd} /></a>
                             <a href="#"><img src={galaxycine} /></a>
                             <a href="#"><img src={cinestar} /></a>
                             <a href="#"><img src={lotte} /></a>
                         </div>
-                        <div className="col-12 row">
+                        <div className="col-12 py-2">
                             <a href="#"><img src={megags} /></a>
                             <a href="#"><img src={bt}/></a>
                             <a href="#"><img src={dongdacinema} /></a>
                             <a href="#"><img src={TOUCH} /></a>
                             <a href="#"><img src={cnx} /></a>
                         </div>
-                        <div className="col-12 row">
+                        <div className="col-12 py-2">
                             <a href="#"><img src={STARLIGHT} /></a>
                             <a href="#"><img src={VCB} /></a>
                             <a href="#"><img src={VIETTINBANK} /></a>
                             <a href="#"><img src={zalopay_icon} /></a>
                             <a href="#"><img src={zion} /></a>
                         </div>
-                        <div className="col-12 row">
+                        <div className="col-12 py-2">
                             <a href="#"><img src={payoo} /></a>
                             <a href="#"><img src={laban} /></a>
                             <a href="#"><img src={AGRIBANK} /></a>
                             <a href="#"><img src={dcine} /></a>
                             <a href="#"><img src={IVB} /></a>
+                        </div>
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-4 footer__app ">

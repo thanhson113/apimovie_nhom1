@@ -166,13 +166,11 @@
 .cineplex .ant-collapse{
     margin: 0 0 15px;
 }
-.cineplex .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow{
-    vertical-align: -10px;
-}
 
-/* .cineplex .ant-collapse{
+
+.cineplex .ant-collapse{
     display:none;
-} */
+}
 /*  Responsive */
 @media screen and (max-width: 992px){
     .movielist__tab img{
@@ -186,12 +184,21 @@
     }
 }
 @media screen and (max-width: 768px){
-    /* .cineplex .ant-collapse{
+    .cineplex .ant-collapse{
         display:block;
     }
-    .cineplex .cineplex__tabcontent{
+    .cineplex .ant-tabs{
         display:none;
-    } */
+    }
+    .cineplex .ant-collapse > .ant-collapse-item > .ant-collapse-header{
+        align-items:center;
+    }
+    .cineplex .ant-collapse > .ant-collapse-item > .ant-collapse-header img{
+        margin-right:  10px;
+    }
+    .movielist__tab p{
+        margin: 5px 0;
+    }
 }
 @media screen and (max-width: 576px){
     .list__phim{

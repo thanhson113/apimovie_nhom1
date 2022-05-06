@@ -1,0 +1,51 @@
+.login {
+    background: url(../../assets/images/icons/bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    width: 100vw;
+    height: 100%;
+    padding: 7% 0;
+}
+
+.loginForm {
+    background-color: #fff;
+}
+
+.login .loginForm .buttonLogin {
+    width: 100%;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 5px 30px;
+    outline: none;
+    border: 1px solid #fb4226;
+    color: #fff;
+    background-color: #fb4226;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+.login .loginForm .input__line {
+    background: none;
+    border-bottom: 1.5px solid #fb4226;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: none;
+}
+.login .loginForm input {
+    border: none;
+}
+.login .loginForm .buttonLogin:hover {
+    border: 1px solid #9b9b9b;
+    color: #9b9b9b;
+    background-color: #fff;
+}
+
+.login .loginForm .forgotPassword {
+    color: #fb4226;
+    font-weight: 500;
+}
+
+.login .loginForm .registerLink {
+    color: #fb4226;
+    font-weight: 500;
+}

@@ -3,8 +3,9 @@ import { ACCESS_TOKEN, USER_LOGIN } from "../../util/Setting";
 // import user from "../../assets/images/avatars/avatar1.jpg"
 import _ from "lodash";
 import { history } from "../../App";
-import React, { Fragment, useState } from 'react'
-import { NavLink, Route } from 'react-router-dom'
+import React, { Fragment, useState, useEffect } from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import { NavLink, Route, Redirect } from 'react-router-dom'
 import { Layout, Menu } from 'antd';
 import {
     MenuUnfoldOutlined,
@@ -16,14 +17,36 @@ import {
 
 const { Header, Sider, Content } = Layout;
 export const AdminTemplate = (props) => {
-    console.log(props.path)
+    const {userLogin} = useSelector(state => state.nguoiDungReducer)
     const [state, setState] = useState({ collapsed: false })
-
     const toggle = () => {
         setState({
             collapsed: !state.collapsed,
         });
     };
+    useEffect(() => {
+        window.scrollTo(0,0)
+    },[])
+    if (!localStorage.getItem(USER_LOGIN)) {
+        alert('Bạn không có quyền truy cập vào trang này !')
+        return <Redirect to='/' />
+    }
+
+    if (userLogin.maLoaiNguoiDung !== 'QuanTri') {
+        alert('Bạn không có quyền truy cập vào trang này !')
+        return <Redirect to='/' />
+    }
+
+    const operations = <Fragment>
+        {!_.isEmpty(userLogin) ? <Fragment> <button onClick={() => {
+            history.push('/profile')
+        }}> <div style={{ width: 50, height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="text-2xl ml-5 rounded-full bg-red-200">{userLogin.taiKhoan.substr(0, 1)}</div>Hello ! {userLogin.taiKhoan}</button> <button onClick={() => {
+            localStorage.removeItem(USER_LOGIN);
+            localStorage.removeItem(ACCESS_TOKEN);
+            history.push('/home');
+            window.location.reload();
+        }} className="text-blue-800">Đăng xuất</button> </Fragment> : ''}
+    </Fragment>
     return <Route exact path={props.path} render={(propsRoute) => {
         return (
             <Fragment>
@@ -63,23 +86,3 @@ export const AdminTemplate = (props) => {
     }} />
 }
 
-// if (!localStorage.getItem(USER_LOGIN)) {
-    //     alert('Bạn không có quyền truy cập vào trang này !')
-    //     return <Redirect to='/' />
-    // }
-
-    // if (userLogin.maLoaiNguoiDung !== 'QuanTri') {
-    //     alert('Bạn không có quyền truy cập vào trang này !')
-    //     return <Redirect to='/' />
-    // }
-
-    // const operations = <Fragment>
-    //     {!_.isEmpty(userLogin) ? <Fragment> <button onClick={() => {
-    //         history.push('/profile')
-    //     }}> <div style={{ width: 50, height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="text-2xl ml-5 rounded-full bg-red-200">{userLogin.taiKhoan.substr(0, 1)}</div>Hello ! {userLogin.taiKhoan}</button> <button onClick={() => {
-    //         localStorage.removeItem(USER_LOGIN);
-    //         localStorage.removeItem(ACCESS_TOKEN);
-    //         history.push('/home');
-    //         window.location.reload();
-    //     }} className="text-blue-800">Đăng xuất</button> </Fragment> : ''}
-    // </Fragment>

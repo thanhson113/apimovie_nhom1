@@ -6,7 +6,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 export default function Profile(props) {
     const {thongTinNguoiDung} = useSelector(state => state.nguoiDungReducer);
-    console.log(thongTinNguoiDung)
     const dispatch = useDispatch();
     useEffect(() => {
         callAPI()

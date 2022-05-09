@@ -15,7 +15,6 @@ function HomeMenu(props) {
     const { Panel } = Collapse;
     const renderRapPhim = () => {
         return heThongRapChieu.map((rap, index) => {
-            console.log(rap)
             return (
                 <Fragment>
                     <TabPane tab={<img src={rap.logo} className="img-fluid" style={{ width: 50 }} />} key={rap.maHeThongRap}>
@@ -67,7 +66,7 @@ function HomeMenu(props) {
                         </Tabs>
                     </TabPane>
                     
-                    <Panel key={`panel-${rap.maHeThongRap}`} header={
+                    <Panel className="hide__collapse" key={`panel-${rap.maHeThongRap}`} header={
                     <>
                         <img src={rap.logo} className="img-fluid" style={{ width: 50 }} />
                         <span>{rap.tenHeThongRap}</span>
@@ -136,7 +135,7 @@ function HomeMenu(props) {
                 {renderRapPhim()}
             </Tabs>
             {/* Collapse */}
-            <Collapse  >
+            <Collapse  className="cineplex__collapse">
                 {renderRapPhim()}
             </Collapse>
         </div>

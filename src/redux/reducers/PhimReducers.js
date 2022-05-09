@@ -1,10 +1,11 @@
-import { GET_MOVIE, GET_TT_MOVIE, SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../types/PhimType"
+import { GET_MOVIE, GET_INFO_MOVIE, SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../types/PhimType"
 
 const movieState = {
   movieArr: [],
   dangChieu: true,
   sapChieu: false,
   arrPhimDefault: [],
+  thongTinPhim : {},
 }
 
 export const movieReducers = (state = movieState, action) => {
@@ -16,7 +17,6 @@ export const movieReducers = (state = movieState, action) => {
       state.sapChieu = false;
       let mangCapNhat = [...state.arrPhimDefault];
       state.movieArr = mangCapNhat.filter(movie => movie.dangChieu === state.dangChieu);
-      console.log( state.movieArr )
       return { ...state }
     }
     case SET_PHIM_DANG_CHIEU: {
@@ -33,6 +33,10 @@ export const movieReducers = (state = movieState, action) => {
       state.movieArr = mangCapNhat.filter(movie => movie.sapChieu === state.sapChieu);
       console.log( state.movieArr )
       return { ...state }
+    }
+    case GET_INFO_MOVIE : {
+      state.thongTinPhim = action.thongTinPhim;
+      return {...state}
     }
     default:
       return state

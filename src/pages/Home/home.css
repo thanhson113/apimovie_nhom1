@@ -168,7 +168,8 @@
 }
 
 
-.cineplex .ant-collapse{
+.cineplex .ant-collapse,
+.cineplex .hide__collapse{
     display:none;
 }
 /*  Responsive */
@@ -184,7 +185,8 @@
     }
 }
 @media screen and (max-width: 768px){
-    .cineplex .ant-collapse{
+    .cineplex .ant-collapse,
+    .cineplex .hide__collapse{
         display:block;
     }
     .cineplex .ant-tabs{

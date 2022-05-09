@@ -5,8 +5,24 @@ class QuanLyPhimService {
     LayDanhSachBanner = () => {
         return http.get('/api/QuanLyPhim/LayDanhSachBanner')
     }
-    layDanhSachPhim = () => {
-        return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`)
+    layDanhSachPhim = (tenPhim) => {
+        if(tenPhim.trim() == ''){
+            return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`)
+        }
+        return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}&tenPhim=${tenPhim}`)
+
+    }
+    themPhimUploadHinh = (formData) => {
+        return http.post('/api/QuanLyPhim/ThemPhimUploadHinh', formData)
+    }
+    layThongTinPhim = (maPhim) => {
+        return http.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`)
+    }
+    capNhatPhimUpload = (formData) => {
+        return http.post('/api/QuanLyPhim/CapNhatPhimUpload', formData)
+    }
+    xoaPhim = (maPhim) => {
+        return http.delete(`api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`)
     }
 
 }

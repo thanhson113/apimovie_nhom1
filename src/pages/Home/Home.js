@@ -16,7 +16,6 @@ export default function Home() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [trailer, setTrailer] = useState('')
   const [visible, setVisible] = useState(8)
-  console.log(visible)
   const { movieArr, dangChieu, sapChieu } = useSelector((state) => state.movieReducers)
   const { rapPhimArr } = useSelector((state) => state.rapPhimReducer)
   const dispatch = useDispatch()

@@ -1,5 +1,6 @@
 import { quanLyRapService } from "../../services/QuanLyRapService";
 import { GET_TT_LICHCHIEU_RAP, GET_TT_LICHCHIEU_PHIM } from "../types/RapPhimType";
+import { message } from 'antd';
 
 export const getTTHeThongRap = () =>{
     return async (dispatch) => {
@@ -27,5 +28,19 @@ export const getTTLichChieu = (id) => {
             console.log(err.response.data)
         }
        
+    }
+}
+
+export const taoLichChieu = (value) => {
+    return async (dispatch) => {
+        try {
+            console.log(value)
+            let result = await quanLyRapService.taoLichChieu(value)
+            console.log(result)
+            // message.success('tạo lịch chiếu thành công');
+        }
+        catch(err){
+            console.log(err.response.data)
+        }
     }
 }

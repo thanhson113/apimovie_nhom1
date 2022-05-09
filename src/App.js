@@ -18,6 +18,7 @@ import Film from './pages/Admin/Film/Film';
 import User from './pages/Admin/User/User'
 import ShowTime from './pages/Admin/Showtime/Showtime';
 import AddFilm from './pages/Admin/Film/AddFilm/AddFilm';
+import EditFilm from './pages/Admin/Film/EditFilm/EditFilm';
 export const history = createBrowserHistory();
 function App() {
   return (
@@ -30,9 +31,10 @@ function App() {
           <UserTemplate  path="/register" component={Register}/>
           <CheckoutTemplate path="/checkout/:id" component={Checkout}/>
           <AdminTemplate path="/admin/user" component={User}/>
-          <AdminTemplate path="/admin/film" component={Film}/>
           <AdminTemplate path="/admin/film/addnew" component={AddFilm}/>
-          <AdminTemplate path="/admin/showtime" component={ShowTime}/>
+          <AdminTemplate path="/admin/film/edit/:id" component={EditFilm}/>
+          <AdminTemplate path="/admin/film/showtime/:id" component={ShowTime}/>
+          <AdminTemplate path="/admin/film" component={Film}/>
           <AdminTemplate path="/admin" component={Dashboard}/>
           <HomeTemplate path="/" component={Home}/> 
           {/* Khi đường dẫn sai thì render về component home */}

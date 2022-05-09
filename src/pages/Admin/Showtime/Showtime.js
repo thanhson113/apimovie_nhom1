@@ -6,7 +6,7 @@ import moment from 'moment';
 import { useFormik } from 'formik';
 import { taoLichChieu } from '../../../redux/actions/RapPhimAction';
 export default function ShowTime(props) {
-  const {id} = props.match.params;
+  const { id, tenphim } = props.match.params;
   const dispatch = useDispatch()
   const [state, setState] = useState({
     heThongRap: [],
@@ -26,12 +26,12 @@ export default function ShowTime(props) {
   }, [])
   const formik = useFormik({
     initialValues: {
-      maPhim :id,
-      ngayChieuGioChieu : '',
+      maPhim: id,
+      ngayChieuGioChieu: '',
       maRap: '',
       giaVe: 0,
     },
-    onSubmit : (value) => {
+    onSubmit: (value) => {
       dispatch(taoLichChieu(value))
     }
   })
@@ -53,7 +53,7 @@ export default function ShowTime(props) {
   const handleChangeDatePicker = (value) => {
     formik.setFieldValue('ngayChieuGioChieu', moment(value).format('DD/MM/YYYY hh:mm:ss'))
   }
-  const handleChangeInputNumber = (value) => { 
+  const handleChangeInputNumber = (value) => {
     console.log(value)
     formik.setFieldValue('giaVe', value)
   }
@@ -78,6 +78,11 @@ export default function ShowTime(props) {
       }
     })
   }
+  let phim = {}
+  if (localStorage.getItem('film')) {
+    phim = JSON.parse(localStorage.getItem('film'))
+  }
+  console.log(phim)
   return (
     <>
       <Form
@@ -86,7 +91,8 @@ export default function ShowTime(props) {
         wrapperCol={{ span: 16 }}
         onSubmitCapture={formik.handleSubmit}
       >
-        <h3>Tạo lịch chiếu</h3>
+        <h3>Tạo lịch chiếu - {tenphim}</h3>
+        <img src={phim.hinhAnh} alt=""  style={{width: 200, height:200, objectFit: 'cover'}}/>
         <Form.Item label="Hệ thống rạp" >
           <Select options={renderHeThongRap()} onChange={handleChangeHTR} placeholder="Chọn hệ thống rạp" />
         </Form.Item>

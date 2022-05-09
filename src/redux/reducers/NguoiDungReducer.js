@@ -1,5 +1,5 @@
 import { ACCESS_TOKEN, USER_LOGIN } from "../../util/Setting"
-import { DANG_NHAP,DANG_KY, GET_TT_NGUOIDUNG, DANG_NHAP_FAIL, COMMENT, CAP_NHAT_ND, DANG_KY_FAIL } from "../types/NguoiDungType"
+import { DANG_NHAP,DANG_KY, GET_TT_NGUOIDUNG, DANG_NHAP_FAIL, COMMENT, CAP_NHAT_ND, DANG_KY_FAIL, GET_DSND,  } from "../types/NguoiDungType"
 
 let user = {}
 if(JSON.parse(localStorage.getItem(USER_LOGIN))){
@@ -12,6 +12,8 @@ const nguoiDungState = {
     dangNhapFail : '',
     dangKyFail : '',
     commentArr : [],
+    danhSachNguoiDung : [],
+    nguoiDungTimKiem : [],
 }
 
 export const nguoiDungReducer = (state = nguoiDungState, action) => {
@@ -48,6 +50,11 @@ export const nguoiDungReducer = (state = nguoiDungState, action) => {
             localStorage.setItem('comment', JSON.stringify( state.commentArr))
             return {...state}
         }
+        case GET_DSND :{
+            state.danhSachNguoiDung = action.danhSachNguoiDung;
+            return {...state}
+        }
+
         default:
             return state
     }

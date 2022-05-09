@@ -16,7 +16,8 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import { themPhim } from '../../../../redux/actions/PhimAction';
 import { GROUPID } from '../../../../util/Setting';
-export default function AddFilm() {
+export default function AddFilm(props) {
+    const [form] = Form.useForm();
     const [componentSize, setComponentSize] = useState('default');
     const [imgSrc, setImgSrc] = useState(null)
     const onFormLayoutChange = ({ size }) => {
@@ -47,11 +48,11 @@ export default function AddFilm() {
                     formData.append('File', values.hinhAnh, values.hinhAnh.name)
                 }
             }
-            console.log(formData.get('File',values));
+            console.log(formData.get('File', values));
             // Xem giá trị của từng thuộc tính trong form data
-
+            form.resetFields();
             // Gọi api
-            dispatch(themPhim(formData))
+            // dispatch(themPhim(formData))
             // onSubmitProps.setSubmitting(false)
             // onSubmitProps.resetForm()
         }
@@ -86,6 +87,9 @@ export default function AddFilm() {
         formik.setFieldValue('hinhAnh', file)
         // validation : formik.setErrors()
     }
+    const onReset = (event) => {
+        form.resetFields();
+    };
     return (
         <>
             <h3 className="mb-5">Thêm mới phim</h3>
@@ -103,6 +107,7 @@ export default function AddFilm() {
                 onValuesChange={onFormLayoutChange}
                 onSubmitCapture={formik.handleSubmit}
                 size={componentSize}
+                form={form}
             >
                 <Form.Item label="Form Size" name="size">
                     <Radio.Group>
@@ -143,8 +148,11 @@ export default function AddFilm() {
                     offset: 4,
                     span: 4,
                 }}>
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" >
                         Thêm phim
+                    </Button>
+                    <Button htmlType="button" onClick={onReset}>
+                        Reset
                     </Button>
                 </Form.Item>
             </Form>

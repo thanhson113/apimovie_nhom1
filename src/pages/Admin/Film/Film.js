@@ -91,8 +91,11 @@ export default function Film() {
             });
            
           }} style={{ fontSize: 20, cursor: 'pointer' }} className="mr-5 text-danger" />
-           <NavLink to={`/admin/film/showtime/${phim.maPhim}`}>
-              <CalendarOutlined style={{ fontSize: 20, cursor: 'pointer' }} className="mr-5 text-success" />
+           <NavLink to={`/admin/film/showtime/${phim.maPhim}/${phim.tenPhim}`}>
+              <CalendarOutlined style={{ fontSize: 20, cursor: 'pointer' }} className="mr-5 text-success" onClick={() => {
+                // Lấy thông tin phim lưu vào local để hiển thị thông tin phim ra trang showtimes
+                localStorage.setItem('film',JSON.stringify(phim))
+              }}/>
             </NavLink>
         </div>
       },

@@ -13,6 +13,7 @@ export default function Detail(props) {
         tabPosition: 'left',
     })
     const phimDetail = useSelector((state) => state.rapPhimReducer.phimDetail)
+    console.log(phimDetail)
     const dispatch = useDispatch()
     useEffect(() => {
         callAPI()

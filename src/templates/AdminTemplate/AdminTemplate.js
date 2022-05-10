@@ -4,9 +4,9 @@ import { ACCESS_TOKEN, USER_LOGIN } from "../../util/Setting";
 import _ from "lodash";
 import { history } from "../../App";
 import React, { Fragment, useState, useEffect } from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Route, Redirect } from 'react-router-dom'
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button, Dropdown } from 'antd';
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
@@ -16,8 +16,9 @@ import {
 } from '@ant-design/icons';
 
 const { Header, Sider, Content } = Layout;
+
 export const AdminTemplate = (props) => {
-    const {userLogin} = useSelector(state => state.nguoiDungReducer)
+    const { userLogin } = useSelector(state => state.nguoiDungReducer)
     const [state, setState] = useState({ collapsed: false })
     const toggle = () => {
         setState({
@@ -25,8 +26,8 @@ export const AdminTemplate = (props) => {
         });
     };
     useEffect(() => {
-        window.scrollTo(0,0)
-    },[])
+        window.scrollTo(0, 0)
+    }, [])
     if (!localStorage.getItem(USER_LOGIN)) {
         alert('Bạn không có quyền truy cập vào trang này !')
         return <Redirect to='/' />
@@ -37,20 +38,10 @@ export const AdminTemplate = (props) => {
         return <Redirect to='/' />
     }
 
-    const operations = <Fragment>
-        {!_.isEmpty(userLogin) ? <Fragment> <button onClick={() => {
-            history.push('/profile')
-        }}> <div style={{ width: 50, height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="text-2xl ml-5 rounded-full bg-red-200">{userLogin.taiKhoan.substr(0, 1)}</div>Hello ! {userLogin.taiKhoan}</button> <button onClick={() => {
-            localStorage.removeItem(USER_LOGIN);
-            localStorage.removeItem(ACCESS_TOKEN);
-            history.push('/home');
-            window.location.reload();
-        }} className="text-blue-800">Đăng xuất</button> </Fragment> : ''}
-    </Fragment>
     return <Route exact path={props.path} render={(propsRoute) => {
         return (
             <Fragment>
-                <Layout style={{minHeight:'100vh'}}>
+                <Layout style={{ minHeight: '100vh' }}>
                     <Sider trigger={null} collapsible collapsed={state.collapsed}>
                         <div className="logo" />
                         <Menu theme="dark" mode="inline">
@@ -66,8 +57,25 @@ export const AdminTemplate = (props) => {
                         </Menu>
                     </Sider>
                     <Layout className="site-layout">
-                        <Header className="site-layout-background" style={{ padding: 0 }}>
+                        <Header className="site-layout-background d-flex justify-content-between align-items-center  px-3" style={{ padding: 0 }}>
                             {state.collapsed ? <MenuUnfoldOutlined style={{ color: 'white', fontSize: '20px' }} onClick={toggle} /> : <MenuFoldOutlined onClick={toggle} style={{ color: 'white', fontSize: '20px' }} />}
+                            <div className=" d-flex">
+                                <div class="dropdown">
+                                    <div>
+                                        <div style={{ width: 50, height: 50, lineHeight: 3.5, cursor: 'pointer' }} className="text-white bg-primary rounded-circle text-center" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">{userLogin.taiKhoan.substr(0, 1)}</div>
+                                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                            <a className="dropdown-item" onClick={() => {
+                                                localStorage.removeItem(USER_LOGIN);
+                                                localStorage.removeItem(ACCESS_TOKEN);
+                                                history.push('/home'); 
+                                                window.location.reload();
+                                            }}>Đăng xuất</a>
+                                            <NavLink className="dropdown-item" to="/profile">Thông tin</NavLink>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                </div>
                         </Header>
                         <Content
                             className="site-layout-background"

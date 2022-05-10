@@ -11,7 +11,11 @@ export const dangNhap = (thongTinDangNhap) => {
                 type: DANG_NHAP,
                 thongTinDangNhap: result.data.content
             })
-            history.push({ pathname: '/home' })
+            if(result.data.content.maLoaiNguoiDung === 'KhachHang'){
+                history.push({ pathname: '/home' })
+            }else{
+                history.push({ pathname: '/admin' })
+            }
         }catch(err){
             dispatch({
                 type: DANG_NHAP_FAIL,

@@ -96,9 +96,6 @@ export default function AddUser() {
                             <Button type="primary" htmlType="submit">
                                 Thêm người dùng
                             </Button>
-                            <Button className="mx-2" type="primary" htmlType="submit">
-                                Cập nhật
-                            </Button>
                         </Form.Item>
                     </Col>
 

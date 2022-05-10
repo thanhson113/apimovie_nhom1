@@ -51,9 +51,6 @@ export const AdminTemplate = (props) => {
                             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
                                 <NavLink to='/admin/film'>Film</NavLink>
                             </Menu.Item>
-                            <Menu.Item key="3" icon={<UploadOutlined />}>
-                                <NavLink to='/admin/showtime'>ShowTime</NavLink>
-                            </Menu.Item>
                         </Menu>
                     </Sider>
                     <Layout className="site-layout">

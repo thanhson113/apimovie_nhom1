@@ -1,3 +1,12 @@
 https://apimovie-nhom1.vercel.app/
 Sơn : Làm giao diện và code chức năng của trang người dùng
 Ngọc: Làm giao diện và code chức năng của trang Admin
+
+Tài khoản user: 
+HoThanhSon
+ThanhSon20@
+
+Tài khoản admin : 
+sonadmin113
+Son1108@
+

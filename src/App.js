@@ -33,7 +33,7 @@ function App() {
           <UserTemplate path="/login" component={Login}/>
           <UserTemplate  path="/register" component={Register}/>
           <CheckoutTemplate path="/checkout/:id" component={Checkout}/>
-          <AdminTemplate path="/admin/user/edituser/:id" component={EditUser}/>
+          <AdminTemplate path="/admin/user/edituser/:taiKhoan" component={EditUser}/>
           <AdminTemplate path="/admin/user/adduser" component={AddUser}/>
           <AdminTemplate path="/admin/user" component={User}/>
           <AdminTemplate path="/admin/film/addnew" component={AddFilm}/>

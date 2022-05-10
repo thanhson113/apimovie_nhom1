@@ -15,7 +15,6 @@ const { Search } = Input;
 export default function User(props) {
   const [page, setPage] = useState(1);
   const { danhSachNguoiDung, nguoiDungTimKiem } = useSelector(state => state.nguoiDungReducer)
-  console.log(nguoiDungTimKiem)
   const dispatch = useDispatch();
   const callAPI = () => {
     dispatch(laydanhSachNguoiDung())

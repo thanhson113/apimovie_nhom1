@@ -1,7 +1,7 @@
 import { history } from '../../App'
 import { quanLyNguoiDungService } from '../../services/QuanLyNguoiDungService'
 import { DANG_NHAP,DANG_KY, GET_TT_NGUOIDUNG, DANG_NHAP_FAIL, CAP_NHAT_ND, DANG_KY_FAIL, GET_DSND, TIM_KIEM_ND } from '../types/NguoiDungType'
-import { message, Button, Space } from 'antd';
+import { message } from 'antd';
 
 export const dangNhap = (thongTinDangNhap) => {
     return async (dispatch) => {
@@ -56,15 +56,10 @@ export const layThongTinTaiKhoan = () => {
 
 export const capNhatThongTinNguoiDung = (thongTinNguoiDung) => {
     return async (dispatch) => {
-      
         try{
-            let thongTinCapNhat = {
-                ...thongTinNguoiDung,
-                maNhom: "GP01",
-                maLoaiNguoiDung: "KhachHang",
-            }
-            const result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(thongTinCapNhat)
+            const result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(thongTinNguoiDung)
             if (result.data.statusCode === 200) {
+                message.success('Cập nhật người dùng thành công');
                 dispatch({
                     type: CAP_NHAT_ND,
                     thongTinCapNhat: result.data.content
@@ -100,4 +95,23 @@ export const themNguoiDung = (nguoiDung) => {
         }
     }
 }
+
+export const capNhatThongTinNguoiDungAdmin = (nguoiDung) => {
+    return async (dispatch) => {
+        try {
+            let result = await quanLyNguoiDungService.capNhatThongTinNguoiDungAdmin(nguoiDung)
+            message.success('Cập nhật người dùng thành công');
+            dispatch({
+                type: CAP_NHAT_ND,
+                thongTinCapNhat: result.data.content
+            })
+            history.push('/admin/user')
+        }catch(err){
+            console.log(err.response.data)
+        }
+    }
+}
+
+
+
 

@@ -4,6 +4,7 @@ import './profile.css'
 import {capNhatThongTinNguoiDung, layThongTinTaiKhoan} from '../../redux/actions/NguoiDungAction'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { GROUPID } from '../../util/Setting';
 export default function Profile(props) {
     const {thongTinNguoiDung} = useSelector(state => state.nguoiDungReducer);
     const dispatch = useDispatch();
@@ -21,6 +22,8 @@ export default function Profile(props) {
           email: thongTinNguoiDung?.email,
           matKhau: thongTinNguoiDung?.matKhau,
           soDt: thongTinNguoiDung?.soDT,
+          maLoaiNguoiDung : thongTinNguoiDung?.maLoaiNguoiDung,
+          maNhom : GROUPID
         },
         validationSchema: Yup.object({
           hoTen: Yup.string()

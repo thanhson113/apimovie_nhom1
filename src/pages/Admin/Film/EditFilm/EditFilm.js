@@ -25,6 +25,7 @@ export default function EditFilm(props) {
         setComponentSize(size);
     };
     const { thongTinPhim } = useSelector(state => state.movieReducers)
+    console.log(thongTinPhim)
     const dispatch = useDispatch();
     useEffect(() => {
         const { id } = props.match.params;

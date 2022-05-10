@@ -24,6 +24,8 @@ class QuanLyNguoiDungService {
     themNguoiDung = (nguoiDung) => {
         return http.post('/api/QuanLyNguoiDung/ThemNguoiDung',nguoiDung);
     }
-
+    capNhatThongTinNguoiDungAdmin = (nguoiDung) => {
+        return http.post('/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung', nguoiDung);
+    }
 }
 export const quanLyNguoiDungService = new QuanLyNguoiDungService()

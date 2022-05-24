@@ -6,8 +6,6 @@ import { useSelector,useDispatch } from 'react-redux';
 import './register.css'
 import {dangKy} from '../../redux/actions/NguoiDungAction'
 export default function Register() {
-  const {dangKyFail, userRegister} = useSelector(state => state.nguoiDungReducer);
-  console.log(userRegister)
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -33,12 +31,6 @@ export default function Register() {
     }),
     onSubmit: (values, onSubmitProps) => {
       dispatch(dangKy(values))
-      if(Object.values(userRegister).length === 0){
-    
-      }else{
-        console.log('a')
-        onSubmitProps.resetForm()
-      }
     },
   });
   return (

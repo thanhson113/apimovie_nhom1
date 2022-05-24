@@ -41,10 +41,6 @@ export const nguoiDungReducer = (state = nguoiDungState, action) => {
             state.userRegister = action.userRegister;
             return {...state}
         }
-        case DANG_KY_FAIL:{
-            state.dangKyFail = action.dangKyFail;
-            return {...state}
-        }
         case COMMENT : {
             state.commentArr.push(action.comment);
             localStorage.setItem('comment', JSON.stringify( state.commentArr))

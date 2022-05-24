@@ -34,10 +34,7 @@ export const dangKy = (thongTinDangKi) => {
                 userRegister : result.data.content
             })
         }catch(err) {
-            dispatch({
-                type: DANG_KY_FAIL,
-                dangKyFail: err.response.data.content
-            })
+            message.error(err.response.data.content,3)
         }
     }
 }
